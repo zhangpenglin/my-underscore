@@ -74,26 +74,47 @@ _.reject = function (arr, fn) {
     }
     return result
 }
+_.partition=function(arr,fn){
+    var result = [[],[]]
+    for (var i = 0, l = arr.length; i < l; i++) {
+        var a = fn(arr[i], i, arr)
+        if (a) {
+            result[0].push(a)
+        }else{
+            result[1].push(a)
+        }
+    }
+    return result
+}
+
 _.contains = function (arr, value) {
     return arr.indexOf(value) > -1
 }
-_.range=function(start,stop){
-    if(stop===undefined){
-        stop=start
-        start=0
+_.range = function (start, stop) {
+    if (stop === undefined) {
+        stop = start
+        start = 0
     }
-    var results=[]
-    while(true){
-        if(stop==start) return results
+    var results = []
+    while (stop != start) {
         results.push(start)
         start++
     }
-
+    return results
 }
-
+_.chunk = function (arr, size) {
+    var index = 0
+    var newArr = []
+    for (var i = 0, l = arr.length; i < l; i++) {
+        if (i != 0 && (i % size == 0 || i ==l)) {
+            index++
+        }
+        newArr[index].push(arr[i])
+    }
+    return newArr
+}
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
         Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
-console.log(_.range(10))
