@@ -38,6 +38,14 @@ _.reduce = function (arr, fn, memo) {
     }
     return memo
 }
+_.reduceRight = function (arr, fn, memo) {
+    var l=arr.length
+    while(l--){
+        memo = fn(memo, arr[l], arr.length-l, arr)
+
+    }
+    return memo
+}
 _.find = function (arr, fn) {
     for (var i = 0, l = arr.length; i < l; i++) {
         if (fn(arr[i], i, arr)) {
@@ -113,8 +121,22 @@ _.chunk = function (arr, size) {
     }
     return newArr
 }
+_.pluck=function(arr,property){
+    var newArr=[]
+    for(var i=0,l=arr.length;i<l;i++){
+        for(var p in arr[i]){
+            if(p==property){
+                newArr.push(arr[i][p])
+                break
+            }
+        }
+    }
+    return newArr
+}
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
         Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
+var a=_.pluck([{a:1},{a:2}],'a')
+console.log(a)
