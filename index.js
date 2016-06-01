@@ -39,9 +39,9 @@ _.reduce = function (arr, fn, memo) {
     return memo
 }
 _.reduceRight = function (arr, fn, memo) {
-    var l=arr.length
-    while(l--){
-        memo = fn(memo, arr[l], arr.length-l, arr)
+    var l = arr.length
+    while (l--) {
+        memo = fn(memo, arr[l], arr.length - l, arr)
 
     }
     return memo
@@ -67,7 +67,7 @@ _.filter = function (arr, fn) {
     for (var i = 0, l = arr.length; i < l; i++) {
         var a = fn(arr[i], i, arr)
         if (a) {
-            result.push(a)
+            result.push(arr[i])
         }
     }
     return result
@@ -77,20 +77,16 @@ _.reject = function (arr, fn) {
     for (var i = 0, l = arr.length; i < l; i++) {
         var a = fn(arr[i], i, arr)
         if (!a) {
-            result.push(a)
+            result.push(arr[i])
         }
     }
     return result
 }
-_.partition=function(arr,fn){
-    var result = [[],[]]
+_.partition = function (arr, fn) {
+    var result = [[], []]
     for (var i = 0, l = arr.length; i < l; i++) {
         var a = fn(arr[i], i, arr)
-        if (a) {
-            result[0].push(a)
-        }else{
-            result[1].push(a)
-        }
+        result[a ? 0 : 1].push(arr[i])
     }
     return result
 }
@@ -104,7 +100,8 @@ _.range = function (start, stop) {
         start = 0
     }
     var results = []
-    while (stop != start) {
+    while (true) {
+        if(start>stop) break
         results.push(start)
         start++
     }
@@ -114,18 +111,19 @@ _.chunk = function (arr, size) {
     var index = 0
     var newArr = []
     for (var i = 0, l = arr.length; i < l; i++) {
-        if (i != 0 && (i % size == 0 || i ==l)) {
+        if (i != 0 && (i % size == 0 || i == l)) {
             index++
         }
+        newArr[index]=newArr[index]||[]
         newArr[index].push(arr[i])
     }
     return newArr
 }
-_.pluck=function(arr,property){
-    var newArr=[]
-    for(var i=0,l=arr.length;i<l;i++){
-        for(var p in arr[i]){
-            if(p==property){
+_.pluck = function (arr, property) {
+    var newArr = []
+    for (var i = 0, l = arr.length; i < l; i++) {
+        for (var p in arr[i]) {
+            if (p == property) {
                 newArr.push(arr[i][p])
                 break
             }
@@ -135,9 +133,7 @@ _.pluck=function(arr,property){
 }
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
-        Object.prototype.toString.call(o) === '[object ' + s + ']'
+      return  Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
-var a=_.pluck([{a:1},{a:2}],'a')
-console.log(a)
-module.exports=_
+module.exports = _
