@@ -1,0 +1,23 @@
+{
+  "name": "my-underscore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "chai": "^3.5.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangpenglin/my-underscore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangpenglin/my-underscore/issues"
+  },
+  "homepage": "https://github.com/zhangpenglin/my-underscore#readme"
+}

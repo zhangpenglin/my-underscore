@@ -140,3 +140,4 @@ _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
 })
 var a=_.pluck([{a:1},{a:2}],'a')
 console.log(a)
+module.exports=_
