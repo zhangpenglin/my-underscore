@@ -72,6 +72,23 @@ _.filter = function (arr, fn) {
     }
     return result
 }
+_.where = function (arr, obj) {
+    var result = [];
+    for (var i = 0, l = arr.length; i < l; i++) {
+        var objLength = 0;
+        var matchCount = 0
+        for (var p in obj) {
+            objLength++
+            if (arr[i][p] != undefined && arr[i][p] === obj[p]) {
+                matchCount++
+            }
+        }
+        if (objLength == matchCount) {
+            result.push[arr[i]]
+        }
+    }
+    return result
+}
 _.reject = function (arr, fn) {
     var result = []
     for (var i = 0, l = arr.length; i < l; i++) {
@@ -101,7 +118,7 @@ _.range = function (start, stop) {
     }
     var results = []
     while (true) {
-        if(start>stop) break
+        if (start > stop) break
         results.push(start)
         start++
     }
@@ -114,7 +131,7 @@ _.chunk = function (arr, size) {
         if (i != 0 && (i % size == 0 || i == l)) {
             index++
         }
-        newArr[index]=newArr[index]||[]
+        newArr[index] = newArr[index] || []
         newArr[index].push(arr[i])
     }
     return newArr
@@ -133,7 +150,7 @@ _.pluck = function (arr, property) {
 }
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
-      return  Object.prototype.toString.call(o) === '[object ' + s + ']'
+        return Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
 module.exports = _
