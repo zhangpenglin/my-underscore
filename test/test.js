@@ -245,6 +245,17 @@ describe('my-underscore', ()=> {
             assert.isFalse(result)
         })
     });
+    describe('_.where', ()=> {
+        var arr=[{a:1,b:2},{a:1,b:3},{a:2,b:3}]
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.where)
+        });
+        it('should be true',()=>{
+            var result=_.where(arr,{a:1})
+            assert.deepEqual(result,[{a:1,b:2},{a:1,b:3}])
+        })
+
+    });
 
 });
 

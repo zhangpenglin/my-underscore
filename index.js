@@ -84,7 +84,7 @@ _.where = function (arr, obj) {
             }
         }
         if (objLength == matchCount) {
-            result.push[arr[i]]
+            result.push(arr[i])
         }
     }
     return result
@@ -153,4 +153,6 @@ _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
         return Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
+var result=_.where([{a:1,b:2},{a:1,b:3},{a:2,b:3}],{a:1})
+
 module.exports = _
