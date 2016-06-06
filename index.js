@@ -89,6 +89,21 @@ _.where = function (arr, obj) {
     }
     return result
 }
+_.findWhere = function (arr, obj) {
+    for (var i = 0, l = arr.length; i < l; i++) {
+        var objLength = 0;
+        var matchCount = 0
+        for (var p in obj) {
+            objLength++
+            if (arr[i][p] != undefined && arr[i][p] === obj[p]) {
+                matchCount++
+            }
+        }
+        if (objLength == matchCount) {
+            return(arr[i])
+        }
+    }
+}
 _.reject = function (arr, fn) {
     var result = []
     for (var i = 0, l = arr.length; i < l; i++) {
