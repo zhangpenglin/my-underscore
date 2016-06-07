@@ -100,7 +100,7 @@ _.findWhere = function (arr, obj) {
             }
         }
         if (objLength == matchCount) {
-            return(arr[i])
+            return (arr[i])
         }
     }
 }
@@ -163,11 +163,61 @@ _.pluck = function (arr, property) {
     }
     return newArr
 }
+_.keys = function (o) {
+    if (Object.keys) {
+        return Object.keys(o)
+    }
+    var arr = []
+    for (var key in o) {
+        if (o.hasOwnProperty(key)) {
+            arr.push(key)
+        }
+    }
+    return arr
+}
+_.allKeys = function (o) {
+    var arr = []
+    for (var key in o) {
+        arr.push(key)
+    }
+    return arr
+}
+
+_.values = function (o) {
+    var arr = []
+    for (var key in o) {
+        arr.push(o[key])
+    }
+    return arr
+}
+
+_.mapObject = function (o,fn) {
+    var result = {}
+    for (var key in o) {
+        if (o.hasOwnProperty(key)) {
+            result[key]=fn(o[key],key,o)
+        }
+    }
+    return result
+}
+_.pairs=function(o){
+    var arr = []
+    for (var key in o) {
+        if (o.hasOwnProperty(key)) {
+            arr.push([key,o[key]])
+        }
+    }
+    return arr
+}
+_.create=function(prototype){
+    var Temp=function(){}
+    Temp.prototype=prototype
+    return new Temp()
+}
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
         return Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
-var result=_.where([{a:1,b:2},{a:1,b:3},{a:2,b:3}],{a:1})
 
 module.exports = _

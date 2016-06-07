@@ -267,6 +267,73 @@ describe('my-underscore', ()=> {
         })
 
     });
+    describe('_.keys', ()=> {
+        function Animal(name){
+            this.name=name
+            this.width=10
+        }
+        Animal.prototype.height=20
+        var o=new Animal('dog')
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.keys)
+        });
+        it('should be true',()=>{
+            var result=_.keys(o)
+            assert.deepEqual(result,["name","width"])
+        })
+
+    });
+    describe('_.allKeys', ()=> {
+        function Animal(name){
+            this.name=name
+            this.width=10
+        }
+        Animal.prototype.height=20
+        var o=new Animal('dog')
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.allKeys)
+        });
+        it('should be true',()=>{
+            var result=_.allKeys(o)
+            console.log(o)
+            assert.deepEqual(result,["name","width","height"])
+        })
+    });
+    describe('_.values', ()=> {
+        function Animal(name){
+            this.name=name
+            this.width=10
+        }
+        Animal.prototype.height=20
+        var o=new Animal('dog')
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.values)
+        });
+        it('should be true',()=>{
+            var result=_.values(o)
+            assert.deepEqual(result,["dog",10,20])
+        })
+    });
+    describe('_.mapObject', ()=> {
+       var o={a:1,b:2}
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.mapObject)
+        });
+        it('should be true',()=>{
+            var result=_.mapObject(o,function(v){return v+1})
+            assert.deepEqual(result,{a:2,b:3})
+        })
+    });
+    describe('_.pairs', ()=> {
+        var o={a:1,b:2}
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.pairs)
+        });
+        it('should be true',()=>{
+            var result=_.pairs(o)
+            assert.deepEqual(result,[["a",1],["b",2]])
+        })
+    });
 
 });
 
