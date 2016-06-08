@@ -214,6 +214,15 @@ _.create=function(prototype){
     Temp.prototype=prototype
     return new Temp()
 }
+_.functions=function(o){
+    var result=[]
+    for(var k in o){
+        if(typeof o[k]==='function'){
+            result.push(k)
+        }
+    }
+    return result
+}
 _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
     _['is' + s] = function (o) {
         return Object.prototype.toString.call(o) === '[object ' + s + ']'
