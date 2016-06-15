@@ -209,6 +209,30 @@ _.pairs=function(o){
     }
     return arr
 }
+_.pick=function(o){
+    var restArgs=[].slice.call(arguments,1)
+    var result={}
+    for (var key in o) {
+        if (o.hasOwnProperty(key)) {
+            if(restArgs.indexOf(restArgs)>-1){
+                result[key]=o[key]
+            }
+        }
+    }
+    return result
+}
+_.omit=function(o){
+    var restArgs=[].slice.call(arguments,1)
+    var result={}
+    for (var key in o) {
+        if (o.hasOwnProperty(key)) {
+            if(restArgs.indexOf(restArgs)==-1){
+                result[key]=o[key]
+            }
+        }
+    }
+    return result
+}
 _.create=function(prototype){
     var Temp=function(){}
     Temp.prototype=prototype
