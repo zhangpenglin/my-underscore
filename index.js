@@ -214,7 +214,7 @@ _.pick=function(o){
     var result={}
     for (var key in o) {
         if (o.hasOwnProperty(key)) {
-            if(restArgs.indexOf(restArgs)>-1){
+            if(restArgs.indexOf(key)>-1){
                 result[key]=o[key]
             }
         }
@@ -226,7 +226,7 @@ _.omit=function(o){
     var result={}
     for (var key in o) {
         if (o.hasOwnProperty(key)) {
-            if(restArgs.indexOf(restArgs)==-1){
+            if(restArgs.indexOf(key)==-1){
                 result[key]=o[key]
             }
         }
@@ -252,5 +252,5 @@ _.each(['Array', 'Object', 'String', 'Number', 'Boolean'], function (s) {
         return Object.prototype.toString.call(o) === '[object ' + s + ']'
     }
 })
-
+_.pick({a:1,b:2},'a')
 module.exports = _

@@ -334,6 +334,20 @@ describe('my-underscore', ()=> {
             assert.deepEqual(result,[["a",1],["b",2]])
         })
     });
+    describe('_.pick', ()=> {
+        var o={a:1,b:2,c:3}
+        it('should not be undefined', ()=> {
+            assert.isDefined(_.pick)
+        });
+        it('should be true',()=>{
+            var result=_.pick(o,'a')
+            assert.deepEqual(result,{a:1})
+        })
+        it('should be true',()=>{
+            var result=_.pick(o,'a','b')
+            assert.deepEqual(result,{a:1,b:2})
+        })
+    });
     describe('_.functions', ()=> {
         var o={a:function(){return 1},b:2,c:function(){return 2}}
         it('should not be undefined', ()=> {
